@@ -1,7 +1,8 @@
 <?php
-header("Content-Type: application/json");
+$path = parse_url($_SERVER['REQUEST_URI'], PHP_URL_PATH);
 
-echo json_encode([
-  "message" => "API Railway jalan",
-  "method" => $_SERVER['REQUEST_METHOD']
-]);
+if ($path === '/users') {
+    require 'users.php';
+} else {
+    echo json_encode(["message" => "API Ready"]);
+}
