@@ -1,16 +1,11 @@
 <?php
+ini_set('display_errors', 1);
+ini_set('display_startup_errors', 1);
+error_reporting(E_ALL);
+
 header("Content-Type: application/json");
 
-$conn = new mysqli(
-    $_ENV['MYSQLHOST'],
-    $_ENV['MYSQLUSER'],
-    $_ENV['MYSQLPASSWORD'],
-    $_ENV['MYSQLDATABASE'],
-    $_ENV['MYSQLPORT']
-);
-
-if ($conn->connect_error) {
-    http_response_code(500);
-    echo json_encode(["error" => "DB gagal konek"]);
-    exit;
-}
+echo json_encode([
+    "env" => $_ENV,
+]);
+exit;
